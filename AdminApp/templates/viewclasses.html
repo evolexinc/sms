@@ -1,0 +1,117 @@
+{% extends 'Layout.html' %} {% load static %} {% block main %}
+
+<h3 class="text-center">Classes</h3>
+<table class="table table-borderd" width="100%">
+  <tr>
+    <th>Class ID</th>
+    <th>Class Name</th>
+    <th>Seats</th>
+    <th>ClassRoom Location</th>
+    <th>Subject</th>
+    <th>Teacher</th>
+    <th colspan="2">Action</th>
+  </tr>
+  {% for c in cls %}
+  <tr>
+    <td>{{c.class_id}}</td>
+    <td>{{c.class_name}}</td>
+    <td>{{c.class_seats}}</td>
+    <td>{{c.class_location}}</td>
+    <td>{{c.class_subjects}}</td>
+    <td>{{c.class_teacher}}</td>
+    <td>
+      <a href="{% url 'AdminApp:editclass' id=c.class_id %}"><button class="btn btn-primary">
+          <i class="fa-solid fa-pen"></i></button></a>
+    </td>
+    <td>
+      <a href="{% url 'AdminApp:delete_class' id=c.class_id %}"><button class="btn btn-danger">
+          <i class="fa-solid fa-trash"></i></button></a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %} {% block adminsidebar%} {% load static %}
+<div class="row">
+  <div class="card col-sm-11 my-3 border-0 shadow bg-light bg-opacity-75 es-card py-4">
+    <!-- buttons -->
+    <div class="row">
+      <div class="col-sm-6">
+        <button onclick="es_slide1()" class="btn btn-primary bg-opacity-25">
+          Add Class
+        </button>
+      </div>
+      <div class="col-sm-6">
+        <button onclick="es_slide2()" class="btn btn-primary bg-opacity-25">
+          <i class="fa-solid fa-bell fa-2xl text-warning"></i>
+        </button>
+      </div>
+
+      <div class="page1_class1 my-2 py-2" id="page1_id1">
+        <!-- add class -->
+
+        <h3 class="text-center">Add A Class</h3>
+
+        <form method="post">
+          {% csrf_token %}
+          <table class="table w-50">
+            <tr>
+              <div class="form-floating my-1">
+                <input type="text" name="class_name" class="form-control" id="cname" placeholder="class name" />
+                <label for="cname" class="text-dark">Class name</label>
+              </div>
+            </tr>
+            <tr style="margin: 20px">
+              <div class="form-floating my-1">
+                <input type="number" name="class_seats" class="form-control" id="cseats"
+                  placeholder="Number of Seats" />
+                <label for="cseats" class="text-dark">Number of Seats</label>
+              </div>
+            </tr>
+            <tr style="margin: 20px">
+              <div class="form-floating my-1">
+                <input type="text" name="class_location" class="form-control" id="croom"
+                  placeholder="ClassRoom Location" />
+                <label for="croom" class="text-dark">ClassRoom Location</label>
+              </div>
+            </tr>
+            <tr style="margin: 20px">
+              <div class="form-floating my-1">
+                <input type="text" name="class_subjects" class="form-control" id="csubject"
+                  placeholder="Class Subjects" />
+                <label for="csubject" class="text-dark">Class Subjects</label>
+              </div>
+            </tr>
+            <tr style="margin: 20px">
+              <div class="form-floating my-1">
+                <input type="text" name="class_teacher" class="form-control" id="cteacher"
+                  placeholder="Class Teacher" />
+                <label for="cteacher" class="text-dark">Class Teacher</label>
+              </div>
+            </tr>
+            <button class="btn btn-success my-1" type="submit">
+              Add Class
+            </button>
+          </table>
+        </form>
+
+        <!-- add clss end -->
+      </div>
+      <!--page2-->
+      <!-- edit class -->
+      <div class="page2_class1 py-2" id="page2_id1">
+        <h6 class="es-font py-2 text-center">Announcements</h6>
+
+        <table class="table table-striped">
+          {% for n in ni %}
+          <tr>
+            <td> {{n.notification_msg}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+
+    <!-- edit class end -->
+  </div>
+</div>
+{% endblock%}

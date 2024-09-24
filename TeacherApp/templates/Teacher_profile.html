@@ -1,0 +1,221 @@
+{% extends 'Teacher_Layout.html' %} {% load static %} {% block teacher %}
+<div class="row">
+  <div class="col-sm-12 mx-auto">
+    <div class="row">
+      <h1 class="text-center">Teacher Profile</h1>
+
+      <form method="post" enctype="multipart/form-data" action="{% url 'TeacherApp:uploadpic' %}">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-sm-4 mx-auto text-center">
+            {% if teacher.teacher_profile_image %}
+            <img src="{{teacher.teacher_profile_image.url}}" alt="" class="img-fluid border" height="300px" width="200px">
+            {% endif %}
+                <input type="file" name="pic" >
+                <input type="submit" value="upload" class="btn btn-success" name="">
+          </div>
+        </div>
+    </form>
+      <form method="post">
+        {% csrf_token %}
+        <table class="table table-borderd">
+          <tr>
+<!-- profile  -->
+
+
+            <td>Teacher Name:</td>
+            <td>
+                <input
+                  type="text"
+                  name="teacher_name"
+                  class="form-control"
+                  id="teacher_n"
+                  value={{teacher.teacher_name}}
+                />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Teacher Father Name:</td>
+            <td>
+              <div class="form-floating">
+                <input
+                  type="text"
+                  name="teacher_father_name"
+                  class="form-control"
+                  placeholder="Teacher Father Name"
+                  id="fname"
+                  value="{{teacher.teacher_father_name}}"
+                />
+                <label for="fname">Teacher Father Name</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Teacher Mother Name:</td>
+            <td>
+              <div class="form-floating">
+                <input
+                  type="text"
+                  name="teacher_mother_name"
+                  class="form-control"
+                  placeholder="Teacher Mother Name"
+                  id="mname"
+                  value="{{teacher.teacher_mother_name}}"
+                />
+                <label for="mname">Teacher Mother Name</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Teacher Gender:</td>
+            <td>
+              <input
+                type="text"
+                name="teacher_gender"
+                value="{{teacher.teacher_gender}}"
+                id="gender"
+                class="form-control"
+               readonly>
+              
+            </td>
+          </tr>
+          <tr>
+            <td>Teacher Date Of Birth:</td>
+            <td>
+              <div class="form-floating">
+                <input
+                  type="text"
+                  name="teacher_dob"
+                  class="form-control"
+                  placeholder="Teacher Date Of Birth"
+                  id="dob"
+                  value="{{teacher.teacher_dob}}"
+                />
+                <label for="dob">Teacher Date Of Birth</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Teacher Contact Number:</td>
+            <td>
+              <div class="form-floating">
+                <input
+                  type="text"
+                  name="teacher_phone"
+                  class="form-control"
+                  placeholder="Teacher Contact Number"
+                  id="contactno"
+                  value="{{teacher.teacher_phone}}"
+                />
+                <label for="contactno">Teacher Contact Number</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Teacher Email:</td>
+            <td>
+              <div class="form-floating">
+                <input
+                  type="text"
+                  name="teacher_email"
+                  class="form-control"
+                  placeholder="Teacher Email"
+                  id="email"
+                  value="{{teacher.teacher_email}}"
+                  readonly
+                />
+                <label for="email">Teacher Email</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Teacher Passkey:</td>
+            <td>
+              <div class="form-floating">
+                <input
+                  type="text"
+                  name="teacher_password"
+                  class="form-control"
+                  placeholder="Teacher Passkey"
+                  id="email"
+                  value="{{teacher.teacher_password}}"
+                />
+                <label for="password">Teacher Passkey</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Teacher Allocated Classes As class Teacher</td>
+            <td>
+              <div class="form-floating">
+               <input type="text" value="{{teacher.teacher_allocated_classes}}" class="form-control" readonly>
+                 
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Teacher Address</td>
+            <td>
+              <div class="form-floating">
+                <textarea
+                  name="teacher_address"
+                  class="form-control"
+                  placeholder="Teacher Address"
+                  id="address"
+                  value="{{teacher.teacher_address}}"
+                ></textarea>
+                <label for="address">{{teacher.teacher_address}}</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Teacher Salary:</td>
+            <td>
+              <div class="form-floating">
+                <input
+                  type="number"
+                  name="teacher_salary"
+                  class="form-control"
+                  placeholder="Teacher Salary"
+                  id="salary"
+                  value="{{teacher.teacher_salary}}"
+                  readonly
+                />
+                <label for="salary">Teacher Salary</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Teacher Qualification:</td>
+            <td>
+              <div class="form-floating">
+                <input
+                  type="text"
+                  name="teacher_qualification"
+                  class="form-control"
+                  placeholder="Teacher Qualification"
+                  id="qlfy"
+                  value="{{teacher.teacher_qualification}}"
+                />
+                <label for="qlfy">Teacher Qualification</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <a href="#"
+                ><button type="submit" class="btn btn-success">
+                  Add teacher
+                </button></a
+              >
+            </td>
+          </tr>
+        </table>
+      </form>
+      <!-- card -->
+      <!-- End Card -->
+    </div>
+  </div>
+</div>
+{% endblock %}

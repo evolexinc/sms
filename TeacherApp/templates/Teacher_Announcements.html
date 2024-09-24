@@ -1,0 +1,12 @@
+{% extends 'Teacher_Layout.html' %} {% load static %} {% block teacher %}
+<!-- hello -->
+<h3 class="text-center">Announcements</h3>
+<table class="table table-striped">
+    {% for n in ni %}
+    <tr>
+        <td> {{n.notification_msg}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<!-- add clss end -->
+{% endblock %}

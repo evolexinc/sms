@@ -1,0 +1,94 @@
+{% extends 'Layout.html' %} {% load static %} {% block main %}
+<!---Add subjects-->
+<h1 class="text-center">View Subjects</h1>
+<table class="table table-borderd" width="100%">
+  <tr>
+    <th>Subject ID</th>
+    <th>Subject Name</th>
+    <th>Subject Class</th>
+    <th>Subject Book</th>
+    <th>Subject Teacher</th>
+    <th colspan="2">Action</th>
+  </tr>
+  {% for ks in sub %}
+  <tr>
+    <td>{{ks.subject_id}}</td>
+    <td>{{ks.subject_name}}</td>
+    <td>{{ks.subject_class}}</td>
+    <td>{{ks.subject_book}}</td>
+    <td>{{ks.subject_techer}}</td>
+    <td>
+      <a href="{% url 'AdminApp:edit_subjects' id=ks.subject_id%}"
+        ><button class="btn btn-primary">
+          <i class="fa-solid fa-pen"></i></button
+      ></a>
+    </td>
+    <td>
+      <a href="{% url 'AdminApp:delete_subject' id=ks.subject_id%}"
+        ><button class="btn btn-danger">
+          <i class="fa-solid fa-trash"></i></button
+      ></a>
+    </td>
+  </tr>
+
+  {% endfor %}
+</table>
+{% endblock %} {% block adminsidebar%}
+<div
+  class="card col-sm-11 my-3 border-0 shadow bg-light bg-opacity-75 es-card py-4"
+>
+  <h6 class="text-center">Add Subjects</h6>
+
+  <form method="post">
+    {% csrf_token %}
+    <table class="table">
+      <tr>
+        <td>
+          <input
+            type="text"
+            name="subject_name"
+            class="form-control"
+            placeholder="Subject Name"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <select name="subject_class" class="form-control">
+            <option value="">---Select Class -----</option>
+            {% for c in cl %}
+            <option value="{{c.class_name}}">{{c.class_name}}</option>
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="text"
+            name="subject_book"
+            class="form-control"
+            placeholder="Subject Book"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="text"
+            name="subject_techer"
+            class="form-control"
+            placeholder="Subject Teacher"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit" class="btn btn-success">Add Now</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+{% endblock%}

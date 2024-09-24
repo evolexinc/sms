@@ -1,0 +1,55 @@
+{% extends 'Home_layout.html' %}
+{% load static %}
+{% block smsmain %}
+<div class="row">
+    <div class="col-sm-10 mx-auto">
+        <div class="row">
+            <!------------------form .--------------------->
+            <form action="{% url 'enqsave' %}" method="post">
+                {% csrf_token %}
+                <div class="col-sm-6">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <div class="col-sm-6">
+                    <label> your Gender</label>
+                    <select name="gender">
+                        <option value="">select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="custom">Other</option>
+                    </select>
+
+                    <br>
+                    <textarea name="address" id="">
+
+                       </textarea>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">Enter your number
+                        <input type="number" name="contact_number">
+                    </div>
+                    <div class="col-sm-6">
+                        Email
+                        <input type="email" class="form-control" name="email">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Enter Enquiry </p>
+                        <textarea name="enquiry_text" id="enquiry_text"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary" type="submit"> Sumit Enquiry</button>
+                    </div>
+                </div>
+        </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}

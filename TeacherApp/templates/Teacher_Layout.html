@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+    <script src="{% static 'js/adminjs.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+</head>
+
+<body>
+
+    <div class="container-fluid es-outer  ">
+        <div class="row es-inner ">
+
+            <div class="col-sm-11  mx-auto my-auto shadow">
+                <!-- Top navbar -->
+                <div class="row">
+                    <nav class="es-nav bg-primary bg-opacity-10">
+                        <div class="row">
+                            <div class="col-sm-4 px-5 py-2">
+                                <h6>root@Teacher</h6>
+                            </div>
+                            <div class="col-sm-4 text-center px-5 py-2"> DashBoard</div>
+                            <div class="col-sm-4 text-left px-5 py-2 es-logout"><i class="fa-solid fa-sign-out"></i>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- main body -->
+                <div class="row">
+                    <!-- sidebar 1 -->
+                    <div class="col-sm-1 es-sidebar-1 bg-primary bg-opacity-10">
+                        <span class="navbar px-1">
+                            <a href="{% url 'TeacherApp:Teacher_Profile' %}">
+                                <li
+                                    class="card border-0 shadow bg-light bg-opacity-75 es-icon-card es-profile text-center my-auto pt-2 ">
+                                    <i class="fa-solid fa-user fa-3x"> </i>
+                            </a>
+
+
+                            </li>
+
+                            <li class=" es-icon-card my-3 py-1">
+                                <abbr title="DashBoard" class="initialism">
+                                    <a href="{% url 'TeacherApp:Teacher_Dashboard' %}"><i
+                                            class="fa-solid fa-gauge my-3 fa-2xl"></i>
+                                    </a></abbr>
+                            </li>
+                            <li class=" es-icon-card my-3 py-1">
+                                <abbr title="Manage Attendence" class="initialism">
+                                    <a href="{% url 'TeacherApp:Student_Attendence' %}"><i
+                                            class="fa-solid fa-calendar-days my-3  fa-2xl"></i></a>
+                                </abbr>
+                            </li>
+                            <li class=" es-icon-card my-3 py-1">
+                                <abbr title="Announcements" class="initialism">
+                                    <a href="{% url 'TeacherApp:Teacher_Announcements' %}"><i
+                                            class="fa-solid fa-file-pen my-3  fa-2xl"></i></a>
+                                </abbr>
+
+                            </li>
+                            <li class=" es-icon-card my-3 py-1">
+                                <abbr title="SLM" class="initialism">
+                                    <a href="{% url 'TeacherApp:Teacher_SLM' %}"><i
+                                            class="fa-solid fa-layer-group my-3  fa-2xl"></i></a>
+                                </abbr>
+
+                            </li>
+                            <li class=" es-icon-card my-3 py-1">
+                                <abbr title="View Change Passwod" class="initialism">
+                                    <a href="{% url 'TeacherApp:Teacher_Password' %}"><i
+                                            class="fa-solid fa-key my-3  fa-2xl"></i></a>
+                                </abbr>
+
+
+                            </li>
+                        </span>
+                    </div>
+                    <!-- main container -->
+                    <div class="col-sm-8 es-main bg-primary bg-opacity-10 es-scrollbar">
+
+                        {% block teacher %}
+
+
+                        {% endblock %}
+                        <!-- main code -->
+
+                    </div>
+
+
+                    <!-- Sidebar 2 ES  -->
+                    <div class="col-sm-3 es-sidebar-2 bg-primary bg-opacity-10 es-scrollbar">
+                        {% block teachersidebar %}
+                        <div class="row">
+                            <div class='card col-sm-11 my-3 border-0 bg-light bg-opacity-75  py-4 mx-auto'>
+
+                                <img src="{% static 'images/bg.png' %}" alt="" height="400px" width="100%">
+                                <h6 class="text-center"> Welcome Teacher </h6>
+                            </div>
+
+                        </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="copyright text-center">
+                    Copyright &copy; 2023-2024 <span class="es-cpy-letter">E</span>volex <span
+                        class="es-cpy-letter">S</span>uite | All rights reserved
+                </div>
+            </footer>
+        </div>
+
+
+    </div>
+
+    <!-- bootstrap Script -->
+    <script src="/static/js/bootstrap.bundle.js"></script>
+
+</body>
+
+</html>

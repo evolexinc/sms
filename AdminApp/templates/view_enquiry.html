@@ -1,0 +1,49 @@
+{% extends 'Layout.html' %} {% load static %} {% block main %}
+<h1 class="text-center">Enquiries</h1>
+<table class="table table-borderd bg-transparent">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Address</th>
+    <th>contact</th>
+    <th>Mail</th>
+    <th>enquiry</th>
+    <th>Action</th>
+  </tr>
+  {% for e in enq %}
+  <tr>
+    <td>{{e.id}}</td>
+    <td>{{e.name}}</td>
+    <td>{{e.gender}}</td>
+    <td>{{e.address}}</td>
+
+    <td>{{e.contact_number}}</td>
+    <td>{{e.email}}</td>
+    <td>{{e.enquiry_text}}</td>
+    <td>
+      <a class="btn btn-sm btn-danger" href="{% url 'AdminApp:delete_enq' id=e.id %}">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
+{% block adminsidebar %}
+
+<div class="card col-sm-11 my-3 border-0 shadow bg-light bg-opacity-75 es-card py-4">
+  <!-- Page 1 -->
+
+
+  <h3 class="text-center">Announcements</h3>
+  <table class="table table-striped">
+    {% for n in ni %}
+    <tr>
+      <td> {{n.notification_msg}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <!-- add clss end -->
+</div>
+
+{% endblock %}

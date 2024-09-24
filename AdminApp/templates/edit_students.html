@@ -1,0 +1,128 @@
+{% extends 'Layout.html' %} {% load static %} {% block main %}
+<form method="post">
+  {% csrf_token %}
+  <table class="table table-borderd" width="200">
+    <tr>
+      <td>
+        <div class="form-floating">
+          <input type="text" name="student_adhar" class="form-control" placeholder="Student Aadhar" id="saadhar"
+            value="{{sts.student_adhar}}" />
+          <label for="saadhar"> Student Aadhar</label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-floating">
+          <input type="text" name="student_name" class="form-control" placeholder="Student Name" id="sname"
+            value="{{sts.student_name}}" />
+          <label for="sname"> Student Name</label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-floating">
+          <input type="text" name="student_father_name" class="form-control" placeholder="Student Father Name"
+            id="sfname" value="{{sts.student_father_name}}" />
+          <label for="sfname">Student Father Name</label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-floating">
+          <input type="text" name="student_mother_name" class="form-control" placeholder="Student Mother Name"
+            id="smname" value="{{sts.student_mother_name}}" />
+          <label for="smname">Student Mother Name</label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" name="student_gender" id="gender" value="{{sts.student_gender}}" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-floating">
+          <input type="date" name="student_dob" class="form-control" placeholder="Student Date Of Birth" id="dob"
+            value="{{sts.student_dob}}" />
+          <label for="dob">Student Date Of Birth</label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-floating">
+          <input type="text" name="student_phone" class="form-control" placeholder="Students Contact Number"
+            id="contactno" value="{{sts.student_phone}}" />
+          <label for="contactno">Students Contact Number</label>
+        </div>
+      </td>
+    </tr>
+    <tr></tr>
+    <td>
+      <div class="form-floating">
+        <input type="text" name="student_parents_phone" class="form-control" placeholder="Parents Contact Number"
+          id="pcontactno" value="{{sts.student_parents_phone}}" />
+        <label for="pcontactno">Parents Contact Number</label>
+      </div>
+    </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-floating">
+          <input type="text" name="student_email" class="form-control" placeholder="Student Email" id="semail"
+            value="{{sts.student_email}}" />
+          <label for="semail">Student Email</label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-floating">
+          <input type="text" value="{{sts.student_class}}" name="student_class" class="form-control">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-floating">
+          <textarea name="student_address" class="form-control" placeholder="Student Address" id="address"
+            value="{{sts.student_address}}"></textarea>
+          <label for="address">Student Address</label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-floating">
+          <input type="number" name="student_fee" class="form-control" placeholder="Student Fee" id="Fee"
+            value="{{sts.student_fee}}" />
+          <label for="Fee">Student Fee</label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-floating">
+          <input type="text" name="student_subjects" class="form-control" placeholder="Student Subjects" id="sub"
+            value="{{sts.student_subjects}}" />
+          <label for="sub">Student Subjects</label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+
+    </tr>
+    <tr>
+      <td colspan="2">
+        <a href="#"><button type="submit" class="btn btn-success">
+            Edit Student
+          </button></a>
+      </td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

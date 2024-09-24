@@ -1,0 +1,33 @@
+{% extends 'Student_Layout.html' %}
+{% load static %}
+{% block student %}
+<h1 class="text-center"> View Study Material</h1>
+<table class="table">
+    <tr>
+        <th>Sr. No</th>
+        <th>Title</th>
+        <th>Download</th>
+        <th>View</th>
+    </tr>
+    {% for s in slm %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{s.Document_title}}</td>
+        <td> <a href="{{s.Document_location.url}} " download>
+                <button class="btn btn-danger">
+                    Download Now
+                </button>
+            </a></td>
+        <td>
+            <a href="{{s.Document_location.url}}" target="_blank">
+                <button class=" btn btn-primary">
+                    View Now
+                </button>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'Student_Layout.html' %}
+{% load static %}
+{% block student %}
+<h1> Student Attendence </h1>
+<table class="table">
+    <tr>
+        <th>sr no </th>
+        <th>name </th>
+        <th>Attendence </th>
+        <th>Date </th>
+    </tr>
+    {% for a in att %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{a.student_attendence_name}}</td>
+        <td>{{a.student_attendence_status}}</td>
+        <td>{{a.student_attendence_date}}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

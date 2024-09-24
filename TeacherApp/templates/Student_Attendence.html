@@ -1,0 +1,79 @@
+{% extends 'Teacher_Layout.html' %} {% load static %} {% block teacher %}
+<!---Add subjects-->
+{% if msg %}
+
+<div class="alert alert-danger" role="alert">{{msg}}
+    <button class="btn btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+</div>
+{% endif %}
+<table class="table table-striped">
+
+    <tr>
+        <th>Sr no </th>
+        <th>Enrollment id </th>
+        <th>Student id</th>
+        <th>Name</th>
+        <th>Attendence</th>
+        <th>Date</th>
+        <th> Action</th>
+    </tr>
+    {% for s in stu%}
+    <form method="post">
+        {% csrf_token %}
+        <tr>
+
+            <td>{{forloop.counter}}</td>
+            <td>
+
+                <input type="text" name="student_attendence_id" id="" value="{{s.student_enrollment_id}}" readonly>
+            </td>
+            <td>
+                <input type="text" value="{{s.student_enrollment_id}}" name="student_attendence_enrollment_id"
+                    class="form-control" readonly>
+
+            </td>
+            <td><input type="text" name="student_attendence_name" value="{{s.student_name}}" class="form-control"
+                    readonly>
+            </td>
+
+            <td>
+                <select name="student_attendence_status" class="form-control">
+                    <option value="A">Absent</option>
+                    <option value="P">Present</option>
+                </select>
+            </td>
+            <td>
+                <input type="date" name="student_attendence_date" class="form-control">
+            </td>
+            <td>
+                <button type="submit" class=" btn btn-sm btn-success">Mark</button>
+            </td>
+        </tr>
+    </form>
+    {% endfor%}
+</table>
+<!--view subjects-->
+{% endblock %} {% block teachersidebar %}
+
+<div class="row">
+    <div class="card col-sm-11 my-3 border-0 shadow bg-light bg-opacity-75 es-card py-4">
+        <table class=" table table-striped">
+            <th>sr no </th>
+            <th>Name </th>
+            <th>Attendence </th>
+            <th>Date </th>
+            {% for a in attend %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{a.student_attendence_name}}</td>
+                <td>{{a.student_attendence_status}}</td>
+                <td>{{a.student_attendence_date}}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

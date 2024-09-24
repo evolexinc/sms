@@ -1,0 +1,70 @@
+from django.db import models
+# Create your models here.
+# class model
+class classes(models.Model,):
+    class_id=models.IntegerField(auto_created=True,primary_key=True)
+    class_name=models.CharField(max_length=50)
+    class_seats=models.IntegerField()
+    class_location=models.CharField(max_length=50)
+    class_subjects=models.CharField(max_length=100)
+    class_teacher=models.CharField(max_length=50)
+# Teachers Model
+class Teachers(models.Model):
+    teacher_id=models.IntegerField(auto_created=True,primary_key=True)
+    teacher_name=models.CharField(max_length=50)
+    teacher_father_name=models.CharField(max_length=50)
+    teacher_mother_name=models.CharField(max_length=50)
+    teacher_gender=models.CharField(max_length=50)
+    teacher_dob=models.DateField()
+    teacher_phone=models.IntegerField(max_length=15)
+    teacher_email=models.EmailField(max_length=100)
+    teacher_password=models.CharField(max_length=50)
+    teacher_allocated_classes=models.CharField(max_length=1000)
+    teacher_address=models.CharField(max_length=50)
+    teacher_salary=models.IntegerField(max_length=70)
+    teacher_qualification=models.CharField(max_length=500)
+    teacher_profile_image=models.ImageField(upload_to='')
+    teacher_joining_date=models.DateTimeField()
+
+# subjects model 
+class Subjects(models.Model):
+    subject_id=models.IntegerField(auto_created=True,primary_key=True)
+    subject_name=models.CharField(max_length=50)
+    subject_class=models.CharField(max_length=50)
+    subject_book=models.CharField(max_length=50)
+    subject_techer=models.CharField(max_length=50)
+#students
+class Students(models.Model):
+    # student_serial_no=models.IntegerField()
+    student_enrollment_id=models.IntegerField(auto_created=True,primary_key=True)
+    student_adhar=models.IntegerField()
+    student_name=models.CharField(max_length=50)
+    student_father_name=models.CharField(max_length=50)
+    student_mother_name=models.CharField(max_length=50)
+    student_gender=models.CharField(max_length=50)
+    student_dob=models.DateField()
+    student_phone=models.IntegerField()
+    student_parents_phone=models.IntegerField(max_length=15)
+    student_email=models.EmailField(max_length=100)
+    student_password=models.CharField(max_length=50)
+    student_class=models.CharField(max_length=1000)
+    student_address=models.CharField(max_length=50)
+    student_fee=models.IntegerField()
+    student_subjects=models.CharField(max_length=500)
+    student_profile_image=models.ImageField(upload_to='')
+    student_admission_date=models.DateTimeField()
+class Attendence(models.Model):
+    attendence_id=models.AutoField(primary_key=True)
+    student_attendence_id=models.CharField(max_length=150)
+    student_attendence_enrollment_id=models.IntegerField()
+    student_attendence_name=models.CharField(max_length=50)
+    student_attendence_email=models.EmailField(max_length=100)
+    student_attendence_class=models.CharField(max_length=50)
+    student_attendence_class_teacher=models.CharField(max_length=1000)
+    student_attendence_status=models.CharField(max_length=1)
+    student_attendence_date=models.DateField()
+class Notifications(models.Model):
+    notification_id=models.AutoField(primary_key=True)
+    notification_document=models.FileField(upload_to='')
+    notification_msg=models.TextField()
+    notification_date=models.DateField()

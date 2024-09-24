@@ -1,0 +1,131 @@
+/* bootstrap overrites  */
+.col-sm-11{
+            border-radius: 20px;
+        }
+/* WRITTEN BY EVOLEX SUITE  */
+
+
+/* Hide show */
+    /*page1*/
+    .page1_class1-off{
+        display: none;
+      }
+    
+    
+    /*page2*/
+    .page2_class1{
+        display: none;
+      }
+    
+    .page2_id1-off{
+        display:none;
+    }
+
+/* hide show off */
+.es-scrollbar {
+  height: 200px;
+}
+.es-scrollbar {
+  overflow-y: scroll;
+}
+.es-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.es-scrollbar::-webkit-scrollbar-track {
+  background: #eee;
+}
+.es-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #00d2ff;
+  background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
+}
+
+.es-font {
+    font-family: 'rubik', sans-serif;
+}
+.es-nav{
+    height: 50px;
+    max-height: 100px;
+    border-radius: 20px 20px 0px 0px;
+    border-bottom:.2px solid aliceblue;
+}
+
+.es-outer {
+
+    height: 650px;
+    max-height: 650px;
+    scroll-behavior: smooth;
+   
+    background-image: linear-gradient(to bottom right, rgb(196, 220, 241), white);;
+
+}
+
+.es-inner {
+    
+    height: 650px;
+    max-height: 650px;
+    border-radius: 10px;
+    
+    
+}
+
+.es-sidebar-1 {
+
+    height: 500px;
+    max-height: 500px;
+    border-radius: 0px 0px 0px 20px;
+    border-right:0.2px dashed white;
+
+}
+
+.es-main {
+    height: 500px;
+    max-height: 500px;
+    border-radius: 0px 0px 0px 0px;
+    overflow: scroll;
+
+}
+
+.es-sidebar-2 {
+    height: 500px;
+    max-height: 550px;
+    border-radius: 0px 0px 20px 0px;
+    overflow: scroll;
+    border-left: 0.2px solid aliceblue;
+    
+    
+}
+.es-card{
+   
+    max-height: fit-content;
+    padding: auto;
+    margin: auto;
+    
+}
+.es-icon-card{
+ height: 40px;
+ width: 100%;
+ max-block-size: 120px;
+ list-style: none;
+ border: 1px solid white;
+ border-radius: 20px;
+ text-align: center;
+ padding-top: 5px;
+}
+.es-profile{
+    height: 70px;
+    width: 100%;
+    max-block-size: 120px;
+    border-radius: 100%;
+    padding-top: 35px;
+    
+}
+.es-logout{
+    text-align: right;
+    font-family: 'rubik'sans-serif;
+}
+.es-cpy-letter{
+    font-size: 28px;
+    font-weight: 900px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

@@ -1,0 +1,256 @@
+{% extends 'Layout.html' %} {% load static %}
+<!-- Teachers -->
+{% block adminsidebar %}
+<div
+  class="card col-sm-11 my-3 border-0 shadow bg-light bg-opacity-75 es-card py-4"
+>
+  <h6 class="text-center">Add Teachers</h6>
+
+  <!-- add -->
+  <form method="post">
+    {% csrf_token %}
+    <table class="table table-borderd" width="200">
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input
+              type="text"
+              name="teacher_name"
+              class="form-control"
+              placeholder="Teacher Name"
+              id="teacher_n"
+            />
+            <label for="teacher_n"> Teacher Name</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input
+              type="text"
+              name="teacher_father_name"
+              class="form-control"
+              placeholder="Teacher Father Name"
+              id="fname"
+            />
+            <label for="fname">Teacher Father Name</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input
+              type="text"
+              name="teacher_mother_name"
+              class="form-control"
+              placeholder="Teacher Mother Name"
+              id="mname"
+            />
+            <label for="mname">Teacher Mother Name</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="radio"
+            name="teacher_gender"
+            value="Male"
+            id="gender"
+          />Male
+          <input
+            type="radio"
+            name="teacher_gender"
+            value="Female"
+            id="gender"
+          />
+          Female
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input
+              type="date"
+              name="teacher_dob"
+              class="form-control"
+              placeholder="Teacher Date Of Birth"
+              id="dob"
+            />
+            <label for="dob">Teacher Date Of Birth</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input
+              type="text"
+              name="teacher_phone"
+              class="form-control"
+              placeholder="Teacher Contact Number"
+              id="contactno"
+            />
+            <label for="contactno">Teacher Contact Number</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input
+              type="text"
+              name="teacher_email"
+              class="form-control"
+              placeholder="Teacher Email"
+              id="email"
+            />
+            <label for="email">Teacher Email</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input
+              type="text"
+              name="teacher_password"
+              class="form-control"
+              placeholder="Teacher Passkey"
+              id="email"
+            />
+            <label for="password">Teacher Passkey</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <select name="teacher_allocated_classes" class="form-control">
+              <option value="">---- select ------</option>
+              {% for c in cls %}
+              <option value="{{c.class_name}}">{{c.class_name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <textarea
+              name="teacher_address"
+              class="form-control"
+              placeholder="Teacher Address"
+              id="address"
+            ></textarea>
+            <label for="address">Teacher Address</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input
+              type="number"
+              name="teacher_salary"
+              class="form-control"
+              placeholder="Teacher Salary"
+              id="salary"
+            />
+            <label for="salary">Teacher Salary</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input
+              type="text"
+              name="teacher_qualification"
+              class="form-control"
+              placeholder="Teacher Qualification"
+              id="qlfy"
+            />
+            <label for="qlfy">Teacher Qualification</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input
+              type="file"
+              name="teacher_profile_image"
+              class="form-control"
+              placeholder="Teacher Profile Image"
+              id="img"
+            />
+            <label for="img">Teacher Profile Image</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <a href="#"
+            ><button type="submit" class="btn btn-success">
+              Add teacher
+            </button></a
+          >
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+{% endblock %} {% block main %}
+<!-- view -->
+<h1 class="text-center es-font">Teachers View</h1>
+<table class="table table-borderd bg-transparent table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Father Name</th>
+    <th>Mother Name</th>
+    <th>Gender</th>
+    <th>Date of Birth</th>
+    <th>contact</th>
+    <th>Mail</th>
+    <th>Password</th>
+    <th>Allocated Class</th>
+    <th>Address</th>
+    <th>Salary</th>
+    <th>Qualification</th>
+    <th>Profile Image</th>
+    <th>joining Date</th>
+    <th>Delete</th>
+  </tr>
+  {% for e in fc %}
+  <tr>
+    <td>{{e.teacher_id}}</td>
+    <td>{{e.teacher_name}}</td>
+    <td>{{e.teacher_father_name}}</td>
+    <td>{{e.teacher_mother_name}}</td>
+    <td>{{e.teacher_gender}}</td>
+    <td>{{e.teacher_dob}}</td>
+    <td>{{e.teacher_phone}}</td>
+    <td>{{e.teacher_email}}</td>
+    <td>{{e.teacher_password}}</td>
+    <td>{{e.teacher_allocated_classes}}</td>
+    <td>{{e.teacher_address}}</td>
+    <td>{{e.teacher_salary}}</td>
+    <td>{{e.teacher_qualification}}</td>
+    <td>{{e.teacher_profile_image}}</td>
+    <td>{{e.teacher_joining_date}}</td>
+    <td>
+      <a
+        class="btn btn-sm btn-danger"
+        href="{% url 'AdminApp:delete_teacher' id=e.teacher_id %}"
+        >Delete</a
+      >
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,197 @@
+{% extends 'Layout.html' %} {% load static %} {% block main %}
+<!-- view students -->
+<h3 class="text-center es-font">Student View</h3>
+<table class="table borderd  table-responsive ">
+  <tr>
+    <th>ID</th>
+    <th>Student Adthar</th>
+    <th>Name</th>
+    <th>Father Name</th>
+    <th>Mother Name</th>
+    <th>Gender</th>
+    <th>Date of Birth</th>
+    <th>contact</th>
+    <th>Parents Contact</th>
+    <th>Mail</th>
+    <th>Password</th>
+    <th>Class</th>
+    <th>Address</th>
+    <th>Fees</th>
+    <th>Subjects</th>
+    <th>Profile Image</th>
+    <th>Admission Date</th>
+    <th>edit</th>
+    <th>Delete</th>
+
+  </tr>
+  {% for e in sts %}
+  <tr>
+    <td>{{e.student_enrollment_id}}</td>
+    <td>{{e.student_adhar}}</td>
+    <td>{{e.student_name}}</td>
+    <td>{{e.student_father_name}}</td>
+    <td>{{e.student_mother_name}}</td>
+    <td>{{e.student_gender}}</td>
+    <td>{{e.student_dob}}</td>
+    <td>{{e.student_phone}}</td>
+    <td>{{e.student_parents_phone}}</td>
+    <td>{{e.student_email}}</td>
+    <td>{{e.student_password}}</td>
+    <td>{{e.student_class}}</td>
+    <td>{{e.student_address}}</td>
+    <td>{{e.student_fee}}</td>
+    <td>{{e.student_subjects}}</td>
+    <td>{{e.student_profile_image}}</td>
+    <td>{{e.student_admission_date}}</td>
+    <td>
+      <a href="{% url 'AdminApp:edit_students' id=e.student_enrollment_id %}"><i class="fa-solid fa-pen "></i></a>
+    </td>
+    <td>
+      <a class="btn btn-sm btn-danger" href="{% url 'AdminApp:delete_student' id=e.student_enrollment_id %}"><i
+          class="fa-solid fa-trash "></i></a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
+<!-- add students -->
+{% block adminsidebar%} <div class='card col-sm-11 my-3 border-0 shadow bg-light bg-opacity-75 es-card py-4'>
+  <h5 class="text-center"> Add Students </h5>
+  {% if msg %}
+  <h6 text="text=center text-warning">{{msg}}</h6>{% endif %}
+  <!-- add -->
+  <form method="post">
+    {% csrf_token %}
+    <table class="" width="100%">
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input type="text" name="student_adhar" class="form-control" placeholder="Student Aadhar" id="saadhar" />
+            <label for="saadhar"> Student Aadhar</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input type="text" name="student_name" class="form-control" placeholder="Student Name" id="sname" />
+            <label for="sname"> Student Name</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input type="text" name="student_father_name" class="form-control" placeholder="Student Father Name"
+              id="sfname" />
+            <label for="sfname">Student Father Name</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input type="text" name="student_mother_name" class="form-control" placeholder="Student Mother Name"
+              id="smname" />
+            <label for="smname">Student Mother Name</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" name="student_gender" value="Male" id="gender" />Male
+          <input type="radio" name="student_gender" value="Female" id="gender" />
+          Female
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input type="date" name="student_dob" class="form-control" placeholder="Student Date Of Birth" id="dob" />
+            <label for="dob">Student Date Of Birth</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input type="text" name="student_phone" class="form-control" placeholder="Students Contact Number"
+              id="contactno" />
+            <label for="contactno">Students Contact Number</label>
+          </div>
+        </td>
+      </tr>
+      <tr></tr>
+      <td>
+        <div class="form-floating">
+          <input type="text" name="student_parents_phone" class="form-control" placeholder="Parents Contact Number"
+            id="pcontactno" />
+          <label for="pcontactno">Parents Contact Number</label>
+        </div>
+      </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input type="text" name="student_email" class="form-control" placeholder="Student Email" id="semail" />
+            <label for="semail">Student Email</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <select name="student_class" class="form-control">
+              <option value="">---- select ------</option>
+              {% for c in cls %}
+              <option value="{{c.class_name}}">{{c.class_name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <textarea name="student_address" class="form-control" placeholder="Student Address" id="address"></textarea>
+            <label for="address">Student Address</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input type="number" name="student_fee" class="form-control" placeholder="Student Fee" id="Fee" />
+            <label for="Fee">Student Fee</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input type="text" name="student_subjects" class="form-control" placeholder="Teacher Qualification"
+              id="sub" />
+            <label for="sub">Student Subjects</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-floating">
+            <input type="file" name="student_profile_image" class="form-control" placeholder="Student Profile Image"
+              id="img" />
+            <label for="img">Student Profile Image</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <a href="#"><button type="submit" class="btn btn-success">
+              Add Student
+            </button></a>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</div>{% endblock %}

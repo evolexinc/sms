@@ -1,0 +1,123 @@
+{% extends 'Layout.html' %} {% load static %} {% block main %}
+<!-- <div class="row">
+  <div class="col-sm-11 mx-auto border"> -->
+
+<div class="row">
+  <div class="card col-sm-11 my-1 border-0 bg-transparent bg-opacity-25 es-card py-4">
+    <div class="row">
+      <div class="card col-sm-4 mx-auto my-3 border-0 shadow bg-transparent bg-opacity-10 py-4">
+
+        <h1 class="text-center text-primary fw-semibold"><i class="fa-solid fa-person-dress fa-xl"></i>
+          {{student_count}}</h1>
+        <p class="text-center"> Total Students </p>
+      </div>
+      <div class="card col-sm-7 my-3 border-0 shadow bg-transparent bg-opacity-10 py-4">
+
+
+
+        <h1 class="text-center text-primary fw-semibold"><i class="fa-solid fa-users fa-xl"></i> {{teacher_count}}</h1>
+        <p class="text-center"> Total Teachers </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row ">
+  <div class="card col-sm-11 my-1 border-0 bg-transparent bg-opacity-25 es-card py-4">
+    <div class="row">
+      <div class="card col-sm-7 my-3 border-0 shadow bg-transparent bg-opacity-25 py-4">
+        <!-- slm is not defined -->
+        <h1 class="text-center text-primary fw-semibold"><i class="fa-solid fa-book fa-xl"></i> {{teacher_count}}
+        </h1>
+        <p class="text-center"> Total SLM</p>
+        <!-- we are showing here the number of teachers -->
+      </div>
+      <div class="card col-sm-4 my-1 mx-auto border-0 shadow bg-transparent bg-opacity-25 py-4">
+        <h1 class="text-center text-primary fw-semibold"><i class="fa-solid fa-person-chalkboard fa-xl"></i>
+          {{class_count}}</h1>
+        <p class="text-center"> Total Classes </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="card col-sm-11 my-3 border-0 bg-transparent bg-opacity-25 es-card py-4">
+    <div class="row">
+      <div class="card col-sm-4 mx-auto my-3 border-0 shadow bg-transparent bg-opacity-25 py-4">
+        <h1 class="text-center text-primary fw-semibold"><i class="fa-solid fa-book fa-xl"></i>{{subject_count}}</h1>
+        <p class="text-center"> Total Subjects </p>
+
+      </div>
+      <div class="card col-sm-7 my-3 border-0 shadow bg-transparent bg-opacity-25 py-4">
+        <p class="text-center text-primary fw-semibold"><i class="fa-solid fa-user fa-xl"></i>
+          present: {{ps}} <br><br><i class="fa-solid fa-user fa-xl"></i>
+          Absent : {{absent}}</p>
+        <p class="text-center"> Total Student Present </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block adminsidebar %}
+<!-- buttons -->
+<div class="row">
+  <div class="col-sm-6">
+    <button onclick="es_slide1()" class="btn btn-primary bg-opacity-25">
+      View Notifications
+    </button>
+  </div>
+  <div class="col-sm-6">
+    <button onclick="es_slide2()" class="btn btn-primary bg-opacity-25">
+      Add Notifications
+    </button>
+  </div>
+
+
+  <!-- edit class end -->
+
+
+  <div class="card col-sm-11 my-3 border-0 shadow bg-light bg-opacity-75 es-card py-4">
+    <!-- Page 1 -->
+    <div class="page1_class1 my-2 py-2" id="page1_id1">
+      <!-- add class -->
+
+      <h3 class="text-center">Announcements</h3>
+      <table class="table table-striped">
+        {% for n in ni %}
+        <tr>
+          <td> {{n.notification_msg}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <!-- add clss end -->
+    </div>
+    <!--page2-->
+    <!-- edit class -->
+    <div class="page2_class1 py-2" id="page2_id1">
+      <h6 class="text-center"> Add Notices</h6>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="table table-borderd">
+          <tr>
+
+
+            <textarea name="notification_msg" class="form-control"></textarea>
+
+          </tr>
+          <tr>
+
+            <input type="file" name="notification_document" class="form-control">
+
+          </tr>
+          <tr>
+
+            <button type="submit" class="btn btn-primary">Announce Now</button>
+
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

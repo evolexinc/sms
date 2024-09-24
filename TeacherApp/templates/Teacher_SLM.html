@@ -1,0 +1,60 @@
+{% extends 'Teacher_Layout.html' %} {% load static %} {% block teacher %}
+
+
+<!--view SLM-->
+<table class="table">
+    <tr>
+        <th>
+            Title Of document
+        </th>
+        <th>
+            File name
+        </th>
+        <th>Uploaded date</th>
+    </tr>
+    {% for s in stl%}
+    <tr>
+        <td>{{s.Document_title}}</td>
+        <td>{{s.Document_location}}</td>
+        <td>{{s.Uploaded_date}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+<!---Add SLM-->
+{% block teachersidebar %}
+<!-- add now -->
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table">
+        <tr>
+            <td>
+                <div class="form-floating">
+                    <input type="text" name="Document_title" class="form-control" id="title"
+                        placeholder="Document title">
+                    <label for="Title">Document Title</label>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-floating">
+                    <input type="file" name="Document_location" class="form-control" placeholder="Upload File"
+                        id="media">
+                    <label for="media">Upload File</label>
+
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit" class="btn btn-primary"> Upload Documents</button>
+            </td>
+        </tr>
+
+    </table>
+</form>
+{% endblock %}
